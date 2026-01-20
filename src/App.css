@@ -1,0 +1,167 @@
+/* Optimized Color Palette */
+:root {
+  --primary: #00adb5;        /* Cyan/Teal (Energetic) */
+  --secondary: #393e46;      /* Slate Grey */
+  --bg-dark: #222831;        /* Deep Midnight */
+  --card-white: #ffffff;
+  --text-dark: #2d3436;
+  --text-muted: #636e72;
+  --danger: #ff7675;         /* Soft Red */
+  --success: #55efc4;        /* Mint Green */
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Inter', 'Segoe UI', sans-serif;
+  /* background ab aur bhi deep aur premium lagega */
+  background: radial-gradient(circle at top left, #222831, #000000);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.app-wrapper {
+  width: 95%;
+  max-width: 700px;
+  padding: 20px;
+}
+
+.main-card {
+  background: var(--card-white);
+  padding: 40px;
+  border-radius: 24px;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+}
+
+.title {
+  color: var(--bg-dark);
+  font-size: 2.2rem;
+  margin-bottom: 30px;
+  text-align: center;
+  font-weight: 800;
+  letter-spacing: -1px;
+}
+
+/* Input Section - Sleek Design */
+.input-container {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 35px;
+  background: #f1f2f6;
+  padding: 10px;
+  border-radius: 18px;
+  transition: all 0.3s ease;
+}
+
+.input-container:focus-within {
+  background: #ffffff;
+  box-shadow: 0 0 0 3px rgba(0, 173, 181, 0.2);
+}
+
+input {
+  flex: 1;
+  border: none;
+  background: transparent;
+  padding: 12px;
+  font-size: 1rem;
+  outline: none;
+  color: var(--text-dark);
+}
+
+.add-btn {
+  background: var(--bg-dark);
+  color: var(--primary); /* Contrast color */
+  border: 2px solid var(--primary);
+  padding: 0 30px;
+  border-radius: 14px;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.add-btn:hover {
+  background: var(--primary);
+  color: white;
+  transform: translateY(-2px);
+}
+
+/* Task Cards Grid */
+.todo-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+.task-card {
+  background: #ffffff;
+  border: 1px solid #f1f2f6;
+  border-radius: 20px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  position: relative;
+}
+
+.task-card::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 4px;
+  background: var(--primary);
+  border-radius: 20px 20px 0 0;
+}
+
+.task-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+}
+
+.task-id {
+  font-size: 0.75rem;
+  color: var(--primary);
+  font-weight: 800;
+  margin-bottom: 10px;
+}
+
+.task-text {
+  color: var(--text-dark);
+  font-size: 1.05rem;
+  font-weight: 600;
+  line-height: 1.4;
+  margin-bottom: 20px;
+}
+
+/* Buttons in footer */
+.task-footer {
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+  margin-top: auto;
+}
+
+.btn-edit {
+  background: #e0f7f8;
+  color: #008187;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 10px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.btn-delete {
+  background: #fff0f0;
+  color: var(--danger);
+  border: none;
+  padding: 8px 14px;
+  border-radius: 10px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.btn-edit:hover { background: var(--primary); color: white; }
+.btn-delete:hover { background: var(--danger); color: white; }
