@@ -1,20 +1,19 @@
 /* Optimized Color Palette */
 :root {
-  --primary: #00adb5;        /* Cyan/Teal (Energetic) */
-  --secondary: #393e46;      /* Slate Grey */
-  --bg-dark: #222831;        /* Deep Midnight */
+  --primary: #00adb5;
+  --secondary: #393e46;
+  --bg-dark: #222831;
   --card-white: #ffffff;
   --text-dark: #2d3436;
   --text-muted: #636e72;
-  --danger: #ff7675;         /* Soft Red */
-  --success: #55efc4;        /* Mint Green */
+  --danger: #ff7675;
+  --success: #55efc4;
 }
 
 body {
   margin: 0;
   padding: 0;
   font-family: 'Inter', 'Segoe UI', sans-serif;
-  /* background ab aur bhi deep aur premium lagega */
   background: radial-gradient(circle at top left, #222831, #000000);
   min-height: 100vh;
   display: flex;
@@ -26,6 +25,7 @@ body {
   width: 95%;
   max-width: 700px;
   padding: 20px;
+  box-sizing: border-box; /* Responsive fix */
 }
 
 .main-card {
@@ -33,6 +33,8 @@ body {
   padding: 40px;
   border-radius: 24px;
   box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .title {
@@ -68,11 +70,12 @@ input {
   font-size: 1rem;
   outline: none;
   color: var(--text-dark);
+  min-width: 0; /* Input shrink fix */
 }
 
 .add-btn {
   background: var(--bg-dark);
-  color: var(--primary); /* Contrast color */
+  color: var(--primary);
   border: 2px solid var(--primary);
   padding: 0 30px;
   border-radius: 14px;
@@ -91,7 +94,8 @@ input {
 /* Task Cards Grid */
 .todo-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  /* Updated for better responsiveness */
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 220px), 1fr));
   gap: 20px;
 }
 
@@ -104,6 +108,9 @@ input {
   flex-direction: column;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
   position: relative;
+  /* Text break safety */
+  word-wrap: break-word;
+  overflow: hidden;
 }
 
 .task-card::before {
@@ -133,6 +140,11 @@ input {
   font-weight: 600;
   line-height: 1.4;
   margin-bottom: 20px;
+  
+  /* --- TEXT WRAP FIX --- */
+  white-space: pre-wrap;      /* Spaces aur new lines maintain rakhega */
+  word-break: break-word;     /* Lamba word container ke andar rakhega */
+  overflow-wrap: anywhere;    /* Kisi bhi lamba text ko bahar nahi jane dega */
 }
 
 /* Buttons in footer */
@@ -143,25 +155,25 @@ input {
   margin-top: auto;
 }
 
-.btn-edit {
-  background: #e0f7f8;
-  color: #008187;
-  border: none;
+.btn-edit, .btn-delete {
   padding: 8px 14px;
   border-radius: 10px;
   font-weight: 700;
   cursor: pointer;
+  border: none;
+  font-size: 0.9rem;
 }
 
-.btn-delete {
-  background: #fff0f0;
-  color: var(--danger);
-  border: none;
-  padding: 8px 14px;
-  border-radius: 10px;
-  font-weight: 700;
-  cursor: pointer;
-}
+.btn-edit { background: #e0f7f8; color: #008187; }
+.btn-delete { background: #fff0f0; color: var(--danger); }
 
 .btn-edit:hover { background: var(--primary); color: white; }
 .btn-delete:hover { background: var(--danger); color: white; }
+
+/* --- Mobile Specific Tweaks --- */
+@media (max-width: 480px) {
+  .main-card { padding: 25px 15px; }
+  .title { font-size: 1.8rem; }
+  .input-container { flex-direction: column; }
+  .add-btn { padding: 12px; }
+}
